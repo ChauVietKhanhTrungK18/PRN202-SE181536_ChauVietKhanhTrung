@@ -83,3 +83,50 @@ Console.WriteLine("Câu 5: tổng lương nhân viên thời vụ");
 Console.WriteLine(pe_sum_salary);
 
 //Xoa va sửa dữ liệu
+//Câu 6: Sửa dữ liệu
+Console.WriteLine("===============Câu 6: Sửa nhân viên================");
+void UpdateEmployee(Employee em)
+{
+    var employee = employees.FirstOrDefault(em => em.Id == em.Id);
+    if (employee == null)
+    {
+        Console.WriteLine("Không tìm thấy nhân viên");
+    }
+    else
+    {
+        employee.IdCard = em.IdCard;
+        employee.Name = em.Name;
+        employee.Birthday = em.Birthday;
+    }
+    Console.WriteLine($"Đã cập nhập thành công! nhân viên có id={em.Id}");
+    employees.ForEach(e => Console.WriteLine(e));
+}
+Console.Write("Nhập id cần xóa: ");
+int id = int.Parse(Console.ReadLine());
+Console.Write("Nhập id card mới:");
+string idCard= Console.ReadLine();
+Console.Write("Nhập tên mới:");
+string name= Console.ReadLine();
+Console.Write("Nhập ngày sinh mới:");
+DateTime birthday = DateTime.Parse(Console.ReadLine());
+UpdateEmployee(new Employee(id,idCard,name,birthday));
+Console.WriteLine("===============Câu 7: Xóa nhân viên================");
+//Câu 7: Remove employee
+void RemoveEmployee(int id)
+{
+    var employee = employees.FirstOrDefault(em => em.Id == em.Id);
+    if (employee == null)
+    {
+        Console.WriteLine("Không tìm thấy nhân viên");
+    }
+    else
+    {
+        employees.Remove(employee);
+        Console.WriteLine($"Xóa thành công nhân viên có id={id}");
+    }
+}
+Console.WriteLine("--Danh sách trước khi xóa--");
+employees.ForEach(e => Console.WriteLine(e));
+RemoveEmployee(1);
+Console.WriteLine("--Danh sách sau khi xóa--");
+employees.ForEach(e => Console.WriteLine(e));
