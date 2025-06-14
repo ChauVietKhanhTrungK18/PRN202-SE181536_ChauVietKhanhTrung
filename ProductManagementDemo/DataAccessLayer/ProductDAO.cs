@@ -10,7 +10,7 @@ namespace DataAccessLayer
     public class ProductDAO
     {
         public static List<Product> listProducts;
-        public ProductDAO()
+         static ProductDAO()
         {
             Product chai = new Product(1, "Chai", 3, 12, 18);
             Product chang = new Product(2, "Chang", 1, 23, 19);
